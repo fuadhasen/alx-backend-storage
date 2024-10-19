@@ -1,14 +1,14 @@
--- sql script for stored function
-
+-- Creates a function SafeDiv 
 DROP FUNCTION IF EXISTS SaveDiv;
 DELIMITER $$
-CREATE FUNCTION SafeDiv(a INT, b INT) RETURNS FLOAT
+
+CREATE FUNCTION SafeDiv (a INT, b INT) RETURNS FLOAT
 BEGIN
     IF b = 0 THEN
         RETURN 0;
     ELSE
         RETURN a / b;
-    END IF
+    END IF;
 END$$
 
 DELIMITER ;
