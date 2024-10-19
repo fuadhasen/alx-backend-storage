@@ -3,17 +3,17 @@
 
 DELIMITER $$
 CREATE PROCEDURE ComputeAverageScoreForUser(
-    IN u_id INT
+    IN user_id INT
 )
 BEGIN
     DECLARE avg FLOAT;
-    SELECT AVG(score) INTO avg
+    SELECT SUM(score) / COUNT(*) INTO avg
     FROM corrections
-    WHERE user_id = u_id
+    WHERE corrections.user_id = user_id;
 
     UPDATE users
     SET average_score = avg
-    WHERE id = u_id;
+    WHERE id = user_id;
 
 END $$
 DELIMITER ;
